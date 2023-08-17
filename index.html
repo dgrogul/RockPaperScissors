@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       
+        
+        function getComputerChoice() {
+            const choices = ['rock', "paper", "scissors"];
+            const randomIndex = Math.floor(Math.random() * choices.length);
+            return choices[randomIndex];
+        }
+        const computerPick = getComputerChoice();
+
+    
+
+function playRound(playerSelection, computerSelection) {
+    // Convert playerSelection to lowercase for case-insensitivity
+    playerSelection = playerSelection.toLowerCase();
+
+    // Define valid choices
+    const choices = ["rock", "paper", "scissors"];
+
+    // Check if playerSelection is valid
+    if (!choices.includes(playerSelection)) {
+        return "Invalid choice. Please choose Rock, Paper, or Scissors.";
+    }
+
+    // Determine the winner
+    if (playerSelection === computerSelection) {
+        return "It's a tie!";
+    } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+        return `You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
+    } else {
+        return `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
+    }
+}
+
+// Example usage
+const playerSelection = "rock"; // You can input any variation of Rock, Paper, or Scissors
+const computerSelection = getComputerChoice(); // Assuming you have the getComputerChoice function from before
+const result = playRound(playerSelection, computerSelection);
+
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+for (let round = 1; round <= 5; round ++) {
+    const playerSelection = prompt(`Round ${round}:Enter your choice (rock, paper, or scissors):`);
+    const computerSelection = getComputerChoice(); 
+    const result = playRound(playerSelection, computerSelection);
+
+    console.log (`Round ${round}: ${result}`);
+
+    if (result.startsWith("You Win!")) {
+        playerScore ++;
+    }
+     else if (result.startsWith("You Lose!")) {
+        computerScore++;
+    }
+    }
+
+
+if (playerScore > computerScore) {
+    console.log("You win the game!");
+} else if (playerScore < computerScore) {
+    console.log("You lose the game!");
+} else {
+    console.log ("It's a tie!");
+}
+}
+
+game(); 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
